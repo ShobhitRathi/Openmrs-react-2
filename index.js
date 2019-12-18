@@ -8,8 +8,14 @@ const app = express();
 const PORT = 8080;
 
 // create a route for the app
+
 app.get('/', (req, res) => {
   res.send('Hello World');
+});
+
+var package = require("./package.json")
+app.get('/info', (request, response) => {
+  response.send({ServerName:package.name, ServerVersion:package.version});
 });
 
 // make the server listen to requests
